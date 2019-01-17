@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node": "ts-node",
+    "mocha": "mocha",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -24,9 +27,9 @@
     "chance": "^1.0.18",
     "mocha": "^5.2.0",
     "moment": "^2.23.0",
+    "test-fake-server": "^2.2.0",
+    "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   },
-  "devDependencies": {
-    "mock-backend-rest": "^1.1.23"
-  }
+  "devDependencies": {}
 }
