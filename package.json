@@ -1,0 +1,32 @@
+{
+  "name": "api_testing_basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderpavlovets/api_testing_basics.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderpavlovets/api_testing_basics/issues"
+  },
+  "homepage": "https://github.com/alexanderpavlovets/api_testing_basics#readme",
+  "dependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.12.18",
+    "chai": "^4.2.0",
+    "chance": "^1.0.18",
+    "mocha": "^5.2.0",
+    "moment": "^2.23.0",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "mock-backend-rest": "^1.1.23"
+  }
+}
