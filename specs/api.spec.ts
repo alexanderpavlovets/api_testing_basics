@@ -1,48 +1,39 @@
-
-// import * as fakeServer from 'test-fake-server'
-// import {serverModel} from '../config/server.model'
-// import {expect} from 'chai'
-// import {httpAsync} from '../api_manager/async.request'
-
-// describe('First suite', () => {
-//   let server = null
-//   const requestOptions = {
-//     protocol: 'http:', // "http:" is default. here just to understanding
-//     host: 'localhost', // "localhost" is default. here just to understanding
-//     port: 8888,
-//     method: 'GET', // "GET" is default. here just to understanding
-//     path: '/ping'
-//   }
-//   // before(() => {
-//   //   server = fakeServer(serverModel)
-//   // })
-//   // after(() => {
-//   //   server.stop()
-//   // })
-
-//   it('First test', async () => {
-//     server = fakeServer(serverModel)
-//     const response = await httpAsync(requestOptions)
-//     console.log(response)
-//     expect(1).to.equal(1)
-//   })
-// })
-
 import {describe, it} from 'mocha'
 import {expect} from 'chai'
-import {httpAsync} from '../api_manager/async.request'
+import {ApiManager} from '../api_manager'
 
-describe('First suite', () => {
-    const requestOptions = {
-    protocol: 'http:', // "http:" is default. here just to understanding
-    host: 'localhost', // "localhost" is default. here just to understanding
-    port: 8888,
-    method: 'GET', // "GET" is default. here just to understanding
-    path: '/ping'
-  }
-  it('First test', async () => {
-    const response = await httpAsync(requestOptions)
-    console.log(response)
-    expect(1).to.equal(1)
+const api = ApiManager.getApiManager()
+
+describe('API GRUD', () => {
+
+  it('API GET ping', async () => {
+    const res = await api.get({path: '/ping'})
+    expect(res.statusCode).to.equal(200, `Status Code should be 200 after GET /ping`)
+    expect(res.body).to.deep.equal({}, 'Response body should be "{}" after GET /ping')
   })
+
+  it('API GET user', async () => {
+    const res = await api.get({path: '/user'})
+    expect(res.statusCode).to.equal(200, `Status Code should be 200 after GET /user`)
+    expect(res.body.user_name).to.equal('test user', 'Response body should contain "user_name": "test user after GET /user')
+  })
+
+  it('API POST user', async () => {
+    const res = await api.post({path: '/user'})
+    expect(res.statusCode).to.equal(200, `Status Code should be 200 after POST /user`)
+    expect(res.body.created).to.equal(true, 'Response body should contain "created: true" after POST /user')
+  })
+
+  it('API PUT user', async () => {
+    const res = await api.put({path: '/user'})
+    expect(res.statusCode).to.equal(200, `Status Code should be 200 after PUT /user`)
+    expect(res.body.updated).to.equal(true, 'Response body should contain "updated: true" after PUT /user')
+  })
+
+  it('API DELETE user', async () => {
+    const res = await api.delete({path: '/user'})
+    expect(res.statusCode).to.equal(200, `Status Code should be 200 after DELETE /user`)
+    expect(res.body.deleted).to.equal(true, 'Response body should contain "deleted: true" after DELETE /user')
+  })
+
 })

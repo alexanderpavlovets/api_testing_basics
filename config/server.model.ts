@@ -4,10 +4,14 @@ const serverModel = {
   "api": [
     {
       "method": "GET",
+      "path": "/ping",
+      "response": {},
+      "status": 200
+    },
+    {
+      "method": "GET",
       "path": "/user",
-      "response": {
-        "user_name": "test user"
-      }
+      "response": {"user_name": "test user"}
     },
     {
       "method": "POST",
@@ -15,10 +19,14 @@ const serverModel = {
       "response": {"created": true}
     },
     {
-      "method": "GET",
-      "path": "/ping",
-      "response": {},
-      "status": 200
+      "method": "PUT",
+      "path": "/user",
+      "response": {"updated": true}
+    },
+    {
+      "method": "DELETE",
+      "path": "/user",
+      "response": {"deleted": true}
     }
   ]
 }

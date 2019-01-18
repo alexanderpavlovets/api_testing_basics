@@ -1,8 +1,7 @@
 import * as Mocha from 'mocha'
-import {mochaOpts, specDir, specFiles} from '../config/mocha.config'
-import * as fakeServer from 'test-fake-server'
-import {serverModel} from '../config/server.model'
 import * as path from 'path'
+import {mochaOpts, specDir, specFiles, serverModel} from '../config'
+import * as fakeServer from 'test-fake-server'
 
 const init = async function(){
   // Create Mocha and add specs to run
