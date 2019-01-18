@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc",
+    "test": "mocha -r ts-node/register specs/api.spec.js"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,9 @@
     "chance": "^1.0.18",
     "mocha": "^5.2.0",
     "moment": "^2.23.0",
+    "test-fake-server": "^2.3.0",
+    "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   },
-  "devDependencies": {
-    "mock-backend-rest": "^1.1.23"
-  }
+  "devDependencies": {}
 }
