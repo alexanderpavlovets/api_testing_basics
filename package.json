@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "test": "mocha -r ts-node/register specs/api.spec.js"
+    "ts-node": "ts-node",
+    "test": "ts-node runner/run.ts"
   },
   "repository": {
     "type": "git",
