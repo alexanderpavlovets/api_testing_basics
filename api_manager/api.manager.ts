@@ -10,18 +10,22 @@ interface IGetRequest {
 interface IPostRequest {
   path: string
   method?: 'POST'
-  data?: any
 }
 
 interface IPutRequest {
   path: string
-  data?: any
   method?: 'PUT'
 }
 
 interface IDeleteRequest {
   path: string
   method?: 'DELETE'
+}
+
+const serverData = {
+  protocol: 'http:', // "http:" is default. here just to understanding
+  host: 'localhost', // "localhost" is default. here just to understanding
+  port: serverModel.port
 }
 
 // Singletone pattern
@@ -39,42 +43,22 @@ class ApiManager {
 
   public async get(requestData: IGetRequest) {
     requestData.method = 'GET'
-    const requestOptions = this.formRequestOptions(requestData)
-    return httpAsync(requestOptions)
+    return httpAsync({...serverData, ...requestData})
   }
 
-  public async post(requestData: IPostRequest) {
+  public async post(requestData: IPostRequest, requestPayload: any = {}) {
     requestData.method = 'POST'
-    const requestOptions = this.formRequestOptions(requestData)
-    return httpAsync(requestOptions, requestData.data)
+    return httpAsync({...serverData, ...requestData}, requestPayload)
   }
 
-  public async put(requestData: IPutRequest) {
+  public async put(requestData: IPutRequest, requestPayload: any = {}) {
     requestData.method = 'PUT'
-    const requestOptions = this.formRequestOptions(requestData)
-    return httpAsync(requestOptions, requestData.data)
+    return httpAsync({...serverData, ...requestData}, requestPayload)
   }
 
   public async delete(requestData: IDeleteRequest) {
     requestData.method = 'DELETE'
-    const requestOptions = this.formRequestOptions(requestData)
-    return httpAsync(requestOptions)
-  }
-
-  private get serverData() {
-    return {
-      protocol: 'http:', // "http:" is default. here just to understanding
-      host: 'localhost', // "localhost" is default. here just to understanding
-      port: serverModel.port
-    }
-  }
-
-  private formRequestOptions(methodRelatedOptions): RequestOptions {
-    // removing data. For cases POST and PUT
-    if (methodRelatedOptions.data) {
-      delete methodRelatedOptions.data
-    }
-    return {...this.serverData, ...methodRelatedOptions}
+    return httpAsync({...serverData, ...requestData})
   }
 }
 
