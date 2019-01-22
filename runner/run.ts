@@ -1,7 +1,9 @@
+require('ts-node').register()
 import * as Mocha from 'mocha'
 import * as path from 'path'
 import {mochaOpts, specDir, specFiles, serverModel} from '../config'
 import * as fakeServer from 'test-fake-server'
+
 
 const init = async function(){
   // Create Mocha and add specs to run

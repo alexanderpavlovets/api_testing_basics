@@ -2,7 +2,10 @@
   "name": "api_testing_basics",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./runner/run.ts",
+  "bin": {
+    "fake-api-test": "./bin/fake-api-test"
+  },
   "scripts": {
     "tsc": "tsc",
     "ts-node": "ts-node",
